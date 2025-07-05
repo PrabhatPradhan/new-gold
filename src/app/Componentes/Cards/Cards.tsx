@@ -44,7 +44,8 @@ const destinations = [
 
 export default function TrendingDestinations() {
   useEffect(() => {
-    import("aos").then((AOS) => {
+    import("aos").then((module) => {
+      const AOS = module.default;
       AOS.init({
         duration: 1000,
         once: true,
