@@ -1,0 +1,47 @@
+/* Responsive spacing for mt-19 and ml-26, ml-42, ml-12 */
+@media (min-width: 1024px) {
+    .mt-19 {
+      margin-top: 4.75rem;
+    }
+  
+    .ml-12 {
+      margin-left: 3rem;
+    }
+  
+    .ml-26 {
+      margin-left: 6.5rem;
+    }
+  
+    .ml-42 {
+      margin-left: 10.5rem;
+    }
+  }
+  
+  /* For tablets and below */
+  @media (max-width: 1023px) {
+    .ml-12,
+    .ml-26,
+    .ml-42 {
+      margin-left: 0 !important;
+    }
+  
+    .mt-19 {
+      margin-top: 2rem;
+    }
+  }
+  
+  /* For very small devices */
+  @media (max-width: 480px) {
+    .footer-subscribe {
+      width: 100% !important;
+      padding: 2rem !important;
+    }
+  
+    .footer {
+      overflow-x: hidden;
+    }
+    #footrt-form{
+      width: 20rem;
+    }
+  }
+ 
