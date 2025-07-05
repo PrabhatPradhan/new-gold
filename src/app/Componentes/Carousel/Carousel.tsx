@@ -78,7 +78,7 @@ export default function TrendingDestinations() {
    
   useEffect(() => {
     AOS.init({
-      duration: 1000, // animation duration in ms
+      duration: 2000, // animation duration in ms
       once: true,     // only animate once
       offset: 120,    // offset (in px) before triggering animation
     });

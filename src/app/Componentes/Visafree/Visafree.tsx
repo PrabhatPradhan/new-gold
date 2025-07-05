@@ -100,12 +100,13 @@ export default function VisaFreeDestinations() {
   };
   useEffect(() => {
     import("aos").then((AOS) => {
-      AOS.init({
+      AOS.default.init({
         duration: 1000,
         once: true,
         offset: 120,
       });
     });
+    
   }, []);
 
   return (

@@ -5,12 +5,13 @@ import 'aos/dist/aos.css';
 export default function PromoCards() {
   useEffect(() => {
     import("aos").then((AOS) => {
-      AOS.init({
+      AOS.default.init({
         duration: 1000,
         once: true,
         offset: 120,
       });
     });
+    
   }, []);
   return (
      

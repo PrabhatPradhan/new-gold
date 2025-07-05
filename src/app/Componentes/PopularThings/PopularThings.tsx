@@ -23,12 +23,13 @@ export default function PopularThingsToDo() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   useEffect(() => {
     import("aos").then((AOS) => {
-      AOS.init({
+      AOS.default.init({
         duration: 1000,
         once: true,
         offset: 120,
       });
     });
+    
   }, []);
   return (
     <section className="max-w-7xl mx-auto px-4 py-16 ml-14 mr-4  "  data-aos="fade-up"

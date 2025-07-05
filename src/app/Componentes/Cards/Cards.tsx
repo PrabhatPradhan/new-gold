@@ -44,14 +44,14 @@ const destinations = [
 
 export default function TrendingDestinations() {
   useEffect(() => {
-    import("aos").then((module) => {
-      const AOS = module.default;
-      AOS.init({
+    import("aos").then((AOS) => {
+      AOS.default.init({
         duration: 1000,
         once: true,
         offset: 120,
       });
     });
+    
   }, []);
   return (
     <div className="py-12 ml-6 px-4 md:px-12 bg-white"  data-aos="fade-up">

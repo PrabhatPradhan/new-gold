@@ -6,12 +6,13 @@ import { useEffect } from "react";
 export default function PromoBanner() {
   useEffect(() => {
     import("aos").then((AOS) => {
-      AOS.init({
+      AOS.default.init({
         duration: 1000,
         once: true,
         offset: 120,
       });
     });
+    
   }, []);
   return (
     <div className="mid"   data-aos="fade-up">

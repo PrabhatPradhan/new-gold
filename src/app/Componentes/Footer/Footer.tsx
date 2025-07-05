@@ -12,12 +12,13 @@ import 'aos/dist/aos.css';
 export default function Footer() {
   useEffect(() => {
     import("aos").then((AOS) => {
-      AOS.init({
+      AOS.default.init({
         duration: 1000,
         once: true,
         offset: 120,
       });
     });
+    
   }, []);
   return (
     <div  data-aos="fade-up" className="footer">
