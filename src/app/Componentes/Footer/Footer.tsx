@@ -9,6 +9,7 @@ import {
   FaPinterestP,
 } from "react-icons/fa6";
 import 'aos/dist/aos.css';
+import Link from "next/link";
 export default function Footer() {
   useEffect(() => {
     import("aos").then((AOS) => {
@@ -68,6 +69,7 @@ export default function Footer() {
               <li>Tour Package</li>
               <li>Tour Guide</li>
               <li>Article</li>
+              <li><Link href="/listing">Listing</Link></li>
             </ul>
           </div>
 
@@ -85,9 +87,10 @@ export default function Footer() {
 
           {/* Address & Payments */}
           <div className="mt-19 ml-12">
+         
             <h3 className="text-lg font-bold mb-3">📍 Address</h3>
-            <p className="text-gray-300 mb-2">House 177, Avenue 01, Mirpur</p>
-            <p className="text-gray-300 mb-4">DOHS, Dhaka Bangladesh</p>
+            <p className="text-gray-300 mb-2">608-609, Aggarwal Millenium Tower,</p>
+            <p className="text-gray-300 mb-4">  Netaji Subhash Place, Pitampura, Delhi-110034</p>
 
             <h4 className="text-white font-semibold mb-2">Payment Partner</h4>
             <div className="flex flex-wrap gap-2">
@@ -127,7 +130,7 @@ export default function Footer() {
         <div className="border-t border-gray-700 py-4 flex flex-col md:flex-row items-center justify-between text-sm text-gray-400">
           <p>
             &copy;Copyright 2025 Tourpeak | Design by{" "}
-            <span className="text-white font-semibold">Qzency</span>
+            <span className="text-white font-semibold">web idea</span>
           </p>
           <div className="flex space-x-4 mt-2 md:mt-0">
             <FaFacebookF className="hover:text-white" />

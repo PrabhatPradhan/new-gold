@@ -43,6 +43,7 @@ export default function page() {
       </div>
 
       <Contactform />
+      <Achievements />
 
       <div className="w-full h-[400px] mt-10" data-aos="fade-up">
         <iframe
@@ -57,7 +58,7 @@ export default function page() {
         ></iframe>
       </div>
 
-      <Achievements />
+  
 
       <Footer />
     </>

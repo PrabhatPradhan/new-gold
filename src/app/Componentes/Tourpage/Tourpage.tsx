@@ -5,16 +5,11 @@ import {
   FaUtensils,
   FaBinoculars,
   FaCar,
-  FaPhoneAlt,
-  FaStar,
-  FaHeart,
-  FaCalendarAlt,
-  FaCamera,
-  FaVideo,
   FaWhatsapp,
 } from "react-icons/fa";
-import { MdOutlineNightlightRound } from "react-icons/md";
+ 
 import "aos/dist/aos.css";
+ 
 
 interface TourCardProps {
   image: string;
@@ -28,7 +23,7 @@ interface TourCardProps {
 
 export default function TourCard({
   image,
-  featured,
+  
   title,
   days,
   night,
@@ -37,98 +32,83 @@ export default function TourCard({
 }: TourCardProps) {
   useEffect(() => {
     import("aos").then((AOS) => {
-      AOS.default.init({
-        duration: 1000,
-        once: true,
-        offset: 120,
-      });
+      AOS.default.init({ duration: 1000, once: true, offset: 120 });
     });
   }, []);
 
   return (
+    <>
+  
     <div
-      className="flex flex-col md:flex-row bg-white rounded-xl overflow-hidden shadow-lg w-full max-w-3xl mx-auto"
+      className="flex flex-col md:flex-row bg-white rounded-xl overflow-hidden shadow-lg w-full max-w-4xl mx-auto border"
       data-aos="fade-up"
     >
       {/* Image Section */}
-      <div className="relative w-full md:w-64 h-52 md:h-auto flex-shrink-0">
+      <div className="relative w-full md:w-72 h-52 md:h-auto flex-shrink-0">
         <img
           src={image}
           alt={title}
-          className="w-full h-[14rem] object-cover"
+          className="w-full h-[18rem] object-cover rounded-t-xl md:rounded-t-none md:rounded-l-xl"
         />
-        {featured && (
-          <span className="absolute top-2 left-2 text-white text-xs px-2 py-1 rounded-md font-semibold">
-            {/* Featured tag if needed */}
-          </span>
-        )}
-        {/* Top-right Icons */}
-        <div className="absolute top-2 right-2 flex gap-2">
-          <div className="flex items-center justify-center text-white bg-black/50 rounded-full w-6 h-6 text-xs">
-            <FaCamera />
-          </div>
-          <div className="flex items-center justify-center text-white bg-black/50 rounded-full w-6 h-6 text-xs">
-            <FaVideo />
-          </div>
-        </div>
-        {/* Heart Icon */}
-        <div className="absolute bottom-2 right-2 bg-white p-1 rounded-full shadow-md text-gray-600 cursor-pointer hover:text-red-500">
-          <FaHeart />
-        </div>
       </div>
 
       {/* Info Section */}
-      <div className="p-4  flex flex-col justify-between w-full relative">
-        {/* Rating and Services */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3 text-gray-600 pt-2 text-lg">
-            <FaHotel />
-            <FaUtensils />
-            <FaBinoculars />
-            <FaCar />
-          </div>
-          <div className="flex items-center text-yellow-400 text-sm mt-2 sm:mt-0">
-            <FaStar className="mr-1" />
-            <span className="font-bold">5</span>
-            <span className="ml-2 text-gray-500 text-xs">(1 Rating)</span>
-          </div>
+      <div className="p-4 flex flex-col justify-between w-full relative">
+        {/* Nights - Days */}
+        <div className="absolute top-2 left-2 bg-pink-200 text-pink-700 text-xs px-3 py-1 rounded-full font-semibold">
+          {night.toString().padStart(2, "0")} Nights - {days.toString().padStart(2, "0")} Days
+        </div>
+
+        {/* Rating */}
+        <div className="absolute top-2 right-2 text-sm text-gray-600">
+          <span className="text-yellow-500 font-semibold">5 ★</span> (Rating)
         </div>
 
         {/* Title */}
-        <h2 className="text-lg font-semibold mt-2">{title}</h2>
+        <h2 className="text-lg font-bold mt-6">{title}</h2>
 
-        {/* Duration */}
-        <div className="flex gap-4 mt-2 text-gray-600 text-sm">
-          <div className="flex items-center gap-1">
-            <FaCalendarAlt /> {days} Days
-          </div>
-          <div className="flex items-center gap-1">
-            <MdOutlineNightlightRound /> {night} Nights
-          </div>
+        {/* Location / Itinerary */}
+        <div className="text-sm mt-2">
+          <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
+            {location}
+          </span>
         </div>
 
-        {/* Location */}
-        <div className="mt-2 text-sm text-gray-500">{location}</div>
+        {/* Icons */}
+        <div className="flex items-center gap-3 mt-4 text-gray-700">
+          {[FaHotel, FaUtensils, FaBinoculars, FaCar].map((Icon, index) => (
+            <div key={index} className="p-2 border rounded-full text-lg">
+              <Icon />
+            </div>
+          ))}
+        </div>
 
-        {/* Contact & Price */}
-        <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-end mt-4 gap-3">
-          <div className="flex gap-4 text-black text-xl">
-            <a
-              href="https://wa.me/919999999999"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaWhatsapp className="hover:text-green-600 cursor-pointer" />
-            </a>
-            <a href="tel:+919999999999">
-              <FaPhoneAlt className="hover:text-blue-500 cursor-pointer" />
-            </a>
-          </div>
-          <div className="text-orange-500 font-bold text-lg">
-            ${price.toFixed(2)}
-          </div>
+        {/* Price */}
+        <div className="mt-4 text-sm">
+          <span className="text-gray-600">Starting From :</span>
+          <span className="text-pink-600 font-bold text-lg ml-2">₹{price.toLocaleString("en-IN")}/-</span>{" "}
+          <span className="text-gray-500">Per Person</span>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3">
+          <a
+            href="https://wa.me/919999999999"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm"
+          >
+            <FaWhatsapp /> Call To Action
+          </a>
+          <a
+            href="#"
+            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full text-sm"
+          >
+            More Details →
+          </a>
         </div>
       </div>
     </div>
+    </>
   );
 }

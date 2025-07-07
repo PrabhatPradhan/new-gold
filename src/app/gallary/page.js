@@ -5,6 +5,7 @@ import { FaPlus, FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Navbar from "../Componentes/Navbar/Navbar";
 import Footer from "../Componentes/Footer/Footer";
 import 'aos/dist/aos.css';
+import Link from "next/link";
 const galleryImages = [
   "/Images/gellary-1.avif",
   "/Images/gellary-2.avif",
@@ -49,7 +50,27 @@ export default function Gallery() {
   return (
     <>
       <Navbar />
-      <section className="py-16 bg-white"  data-aos="fade-up">
+      <div
+        className="relative w-full h-[300px] flex flex-col justify-center pt-6 pl-6  text-white"
+        style={{
+          backgroundImage:
+            'url("https://images.unsplash.com/photo-1532079563951-0c8a7dacddb3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-40"></div>
+
+        <h1 className="relative text-4xl font-bold z-10 mt-6">Gallery</h1>
+
+        <div className="relative z-10 mt-4 px-6 py-2 rounded-full flex   space-x-2 text-sm text-white  ">
+          <Link href="/">Home</Link>
+          <span className="mx-1">➜</span>
+          <span className="font-semibold">Gallery</span>
+        </div>
+      </div>
+
+      <section className=" bg-white"  data-aos="fade-up">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0">
           {galleryImages.map((src, index) => (
             <div

@@ -1,23 +1,31 @@
-'use client'; // if using app directory
+'use client';
 
 import { useEffect } from 'react';
-import { FaPhoneAlt, FaMapMarkerAlt, FaRegClock } from 'react-icons/fa';
+import {
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaRegClock,
+} from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { PiPaperPlaneRightFill } from 'react-icons/pi';
 import 'aos/dist/aos.css';
+
 export default function ContactPage() {
   useEffect(() => {
-    import("aos").then((AOS) => {
+    import('aos').then((AOS) => {
       AOS.default.init({
         duration: 1000,
         once: true,
         offset: 120,
       });
     });
-    
   }, []);
+
   return (
-    <section className="min-h-screen flex flex-col md:flex-row justify-center items-center gap-10 px-6 md:px-16 py-16 bg-white"  data-aos="fade-up">
+    <section
+      className="min-h-screen flex flex-col md:flex-row justify-center items-center gap-10 px-6 md:px-16 py-16 bg-white"
+      data-aos="fade-up"
+    >
       {/* Contact Form */}
       <div className="bg-gray-100 rounded-lg p-8 w-full md:w-1/2 shadow-md">
         <h2 className="text-xl font-semibold mb-2">Drop us a Line</h2>
@@ -44,7 +52,6 @@ export default function ContactPage() {
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none"
           />
           <textarea
-            
             placeholder="📝 Leave your message..."
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none"
           ></textarea>
@@ -78,24 +85,47 @@ export default function ContactPage() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+          {/* Call */}
           <div>
             <div className="flex items-center gap-3 mb-2">
               <FaPhoneAlt className="text-green-600" />
               <h4 className="font-semibold">Call Us On</h4>
             </div>
-            <p className="text-sm text-gray-700">+990-737 621 432</p>
-            <p className="text-sm text-gray-700">+990-737 621 500</p>
+            <a
+              href="tel:+990737621432"
+              className="text-sm text-gray-700 hover:text-green-700 block"
+            >
+              +990-737 621 432
+            </a>
+            <a
+              href="tel:+990737621500"
+              className="text-sm text-gray-700 hover:text-green-700 block"
+            >
+              +990-737 621 500
+            </a>
           </div>
 
+          {/* Email */}
           <div>
             <div className="flex items-center gap-3 mb-2">
               <MdEmail className="text-green-600" />
               <h4 className="font-semibold">Send Mail</h4>
             </div>
-            <p className="text-sm text-gray-700">info@example.com</p>
-            <p className="text-sm text-gray-700">hello@example.com</p>
+            <a
+              href="mailto:info@example.com"
+              className="text-sm text-gray-700 hover:text-green-700 block"
+            >
+              info@example.com
+            </a>
+            <a
+              href="mailto:hello@example.com"
+              className="text-sm text-gray-700 hover:text-green-700 block"
+            >
+              hello@example.com
+            </a>
           </div>
 
+          {/* Address */}
           <div>
             <div className="flex items-center gap-3 mb-2">
               <FaMapMarkerAlt className="text-green-600" />
@@ -106,6 +136,7 @@ export default function ContactPage() {
             </p>
           </div>
 
+          {/* Opening Hours */}
           <div>
             <div className="flex items-center gap-3 mb-2">
               <FaRegClock className="text-green-600" />

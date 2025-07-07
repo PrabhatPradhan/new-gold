@@ -137,7 +137,7 @@ export default function WhoWeAre() {
                   src="/Images/wh0-2.jpeg"
                   alt="Image 2"
                   fill
-                  className="border-4 mt-39 border-white  rounded-lg object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 focus:scale-110"
+                  className="border-4 mt-39    rounded-lg object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 focus:scale-110 "
                 />
               </div>
 
