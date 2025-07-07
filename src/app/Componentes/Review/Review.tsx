@@ -1,7 +1,7 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-
+import 'aos/dist/aos.css';
 const testimonials = [
   {
     image:
@@ -41,10 +41,20 @@ export default function TestimonialSection() {
   };
 
   const current = testimonials[index];
+  useEffect(() => {
+    import("aos").then((AOS) => {
+      AOS.default.init({
+        duration: 1000,
+        once: true,
+        offset: 120,
+      });
+    });
+    
+  }, []);
 
   return (
     <section
-      className="relative py-20 bg-white text-center overflow-hidden"
+      className="relative py-20 bg-white text-center overflow-hidden"  data-aos="fade-up"
       style={{
         backgroundImage: "url('/Images/Review-bg.png')",
         backgroundRepeat: "no-repeat",

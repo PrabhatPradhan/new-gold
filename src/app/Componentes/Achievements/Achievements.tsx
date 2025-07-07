@@ -1,7 +1,19 @@
 // components/StatsSection.jsx
+"use client"
 import { FaUsers, FaProjectDiagram, FaHourglassHalf, FaTrophy } from 'react-icons/fa';
-
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 export default function StatsSection() {
+  useEffect(() => {
+    import("aos").then((AOS) => {
+      AOS.default.init({
+        duration: 1000,
+        once: true,
+        offset: 120,
+      });
+    });
+    
+  }, []);
   const stats = [
     {
       icon: <FaUsers size={32} />,
@@ -26,7 +38,7 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="bg-[#111] text-white py-12">
+    <section className="bg-[#111] text-white py-12"  data-aos="fade-up">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((stat, index) => (
           <div key={index} className="flex flex-col items-center space-y-2">

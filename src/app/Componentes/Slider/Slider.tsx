@@ -109,7 +109,7 @@ export default function TopTrending() {
           </h2>
           <a
           href="#"
-          className="text-slate-700   flex items-center gap-1 font-medium hover:underline text-sm"
+          className="text-slate-700 flex items-center gap-1 font-medium hover:underline text-sm"
         >
           See all
           <GoArrowUpRight />

@@ -1,11 +1,23 @@
-import React from "react";
+"use client"
+import React, { useEffect } from "react";
 import Navbar from "../Componentes/Navbar/Navbar";
 import Footer from "../Componentes/Footer/Footer";
 import Achievements from "../Componentes/Achievements/Achievements";
 // import WhyChooseUs from "../Componentes/WhyChooseUs/WhyChooseUs";
 import Contactform from "../Componentes/Contactform/Contactform";
 import Link from "next/link";
+import 'aos/dist/aos.css';
 export default function page() {
+  useEffect(() => {
+    import("aos").then((AOS) => {
+      AOS.default.init({
+        duration: 1000,
+        once: true,
+        offset: 120,
+      });
+    });
+    
+  }, []);
   return (
     <>
       <Navbar />
@@ -32,7 +44,7 @@ export default function page() {
 
       <Contactform />
 
-      <div className="w-full h-[400px] mt-10">
+      <div className="w-full h-[400px] mt-10" data-aos="fade-up">
         <iframe
           title="Google Map"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.7251188721553!2d90.36650967509194!3d23.79108938709132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7ce1ba1726b%3A0x8fd74a98fbd7293b!2sMirpur%20DOHS!5e0!3m2!1sen!2sbd!4v1689930974036!5m2!1sen!2sbd"

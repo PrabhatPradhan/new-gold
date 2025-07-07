@@ -1,9 +1,22 @@
 // components/ImpactSection.jsx
+"use client"
 import { FaGift, FaUsers } from 'react-icons/fa';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 export default function ImpactSection() {
+  useEffect(() => {
+    import("aos").then((AOS) => {
+      AOS.default.init({
+        duration: 1000,
+        once: true,
+        offset: 120,
+      });
+    });
+    
+  }, []);
   return (
-    <section className="flex flex-col md:flex-row bg-white text-gray-800">
+    <section className="flex flex-col md:flex-row bg-white text-gray-800"  data-aos="fade-up">
       {/* Left: Image */}
       <div className="md:w-1/2 w-full">
         <img

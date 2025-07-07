@@ -32,7 +32,7 @@ export default function PopularThingsToDo() {
     
   }, []);
   return (
-    <section className="max-w-7xl mx-auto px-4 py-16 ml-14 mr-4  "  data-aos="fade-up"
+    <section className="max-w-7xl mx-auto px-4 py-16 ml-12 mr-4  "  data-aos="fade-up"
     
     >
       {/* Heading */}
@@ -43,7 +43,7 @@ export default function PopularThingsToDo() {
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 ">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
         {activities.map(({ title, icon, tours }, index) => {
           const isActive = activeIndex === index;
 

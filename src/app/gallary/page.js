@@ -1,10 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaPlus, FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Navbar from "../Componentes/Navbar/Navbar";
 import Footer from "../Componentes/Footer/Footer";
-
+import 'aos/dist/aos.css';
 const galleryImages = [
   "/Images/gellary-1.avif",
   "/Images/gellary-2.avif",
@@ -36,11 +36,20 @@ export default function Gallery() {
       prev === 0 ? galleryImages.length - 1 : prev - 1
     );
   };
-
+  useEffect(() => {
+    import("aos").then((AOS) => {
+      AOS.default.init({
+        duration: 1000,
+        once: true,
+        offset: 120,
+      });
+    });
+    
+  }, []);
   return (
     <>
       <Navbar />
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white"  data-aos="fade-up">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0">
           {galleryImages.map((src, index) => (
             <div
@@ -66,43 +75,42 @@ export default function Gallery() {
         </div>
       </section>
 
-      
       {/* Fullscreen Modal */}
       {selectedIndex !== null && (
-  <div className="fixed inset-0  bg-gray-600 bg-opacity-90 flex items-center justify-center z-50">
-    <button
-      className="absolute top-4 right-4 text-white text-3xl z-50"
-      onClick={closeModal}
-    >
-      <FaTimes />
-    </button>
+        <div className="fixed inset-0  bg-gray-600 bg-opacity-90 flex items-center justify-center z-50">
+          <button
+            className="absolute top-4 right-4 text-white text-3xl z-50"
+            onClick={closeModal}
+          >
+            <FaTimes />
+          </button>
 
-    <button
-      className="absolute left-4 text-white text-3xl z-50"
-      onClick={showPrev}
-    >
-      <FaChevronLeft />
-    </button>
+          <button
+            className="absolute left-4 text-white text-3xl z-50"
+            onClick={showPrev}
+          >
+            <FaChevronLeft />
+          </button>
 
-    <div className="relative w-screen h-screen flex items-center justify-center">
-      <Image
-        src={galleryImages[selectedIndex]}
-        alt="Full View"
-        fill
-        className="object-contain pointer-events-none"
-      />
-    </div>
+          <div className="relative w-screen h-screen flex items-center justify-center">
+            <Image
+              src={galleryImages[selectedIndex]}
+              alt="Full View"
+              fill
+              className="object-contain pointer-events-none"
+            />
+          </div>
 
-    <button
-      className="absolute right-4 text-white text-3xl z-50"
-      onClick={showNext}
-    >
-      <FaChevronRight />
-    </button>
-  </div>
-)}
+          <button
+            className="absolute right-4 text-white text-3xl z-50"
+            onClick={showNext}
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+      )}
 
-     <Footer/>
+      <Footer />
     </>
   );
 }

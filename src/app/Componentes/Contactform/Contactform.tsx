@@ -1,12 +1,23 @@
 'use client'; // if using app directory
 
+import { useEffect } from 'react';
 import { FaPhoneAlt, FaMapMarkerAlt, FaRegClock } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { PiPaperPlaneRightFill } from 'react-icons/pi';
-
+import 'aos/dist/aos.css';
 export default function ContactPage() {
+  useEffect(() => {
+    import("aos").then((AOS) => {
+      AOS.default.init({
+        duration: 1000,
+        once: true,
+        offset: 120,
+      });
+    });
+    
+  }, []);
   return (
-    <section className="min-h-screen flex flex-col md:flex-row justify-center items-center gap-10 px-6 md:px-16 py-16 bg-white">
+    <section className="min-h-screen flex flex-col md:flex-row justify-center items-center gap-10 px-6 md:px-16 py-16 bg-white"  data-aos="fade-up">
       {/* Contact Form */}
       <div className="bg-gray-100 rounded-lg p-8 w-full md:w-1/2 shadow-md">
         <h2 className="text-xl font-semibold mb-2">Drop us a Line</h2>
