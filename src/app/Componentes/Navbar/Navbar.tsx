@@ -5,19 +5,20 @@ import { IoIosArrowDown } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import Image from "next/image";
+import Link from "next/link";
 import ToursDropdown from "./ToursDropdown/ToursDropdown";
 import DestinationDropdown from "./DestinationDropdown/DestinationDropdown";
-import Link from "next/link";
- 
+
 export default function HeroSection() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+
+  const bookButtonClass =
+    "bg-green-600 text-white py-2 px-5 rounded-full font-semibold hover:bg-green-700 transition";
 
   return (
     <>
       {/* Navbar */}
-       
-   
-
       <div className="fixed top-0 left-0 w-full px-4 md:px-10 py-4 flex justify-between items-center bg-white z-50 shadow">
         {/* Left logo + nav */}
         <div className="flex items-center gap-[7rem]">
@@ -27,6 +28,7 @@ export default function HeroSection() {
             width={112}
             height={40}
             className="w-[9rem]"
+            priority
           />
 
           {/* Desktop nav */}
@@ -40,31 +42,29 @@ export default function HeroSection() {
           </nav>
         </div>
 
-        {/* Right buttons */}
+        {/* Right buttons - DESKTOP */}
         <div className="hidden lg:flex items-center gap-5">
           <FaUserCircle className="text-xl" />
           <div className="flex items-center gap-2">
             <FaWhatsapp className="text-green-800 text-xl" />
             <div className="text-xs leading-4">
               <p className="text-gray-500">Whatsapp</p>
-              <p className="text-green-600 font-semibold">
-                +990-737 621 432
-              </p>
+              <p className="text-green-600 font-semibold">+990-737 621 432</p>
             </div>
           </div>
-          <button className="bg-green-600 text-white py-2 px-5 rounded-full font-semibold">
+          <button
+            suppressHydrationWarning
+            onClick={() => setShowForm(true)}
+            className={bookButtonClass}
+          >
             Book A Trip
           </button>
         </div>
 
-        {/* Hamburger Menu */}
+        {/* Hamburger Menu - MOBILE */}
         <div className="lg:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? (
-              <RxCross2 size={24} />
-            ) : (
-              <GiHamburgerMenu size={24} />
-            )}
+            {menuOpen ? <RxCross2 size={24} /> : <GiHamburgerMenu size={24} />}
           </button>
         </div>
       </div>
@@ -84,6 +84,7 @@ export default function HeroSection() {
               width={112}
               height={40}
               className="w-[9rem]"
+              priority
             />
           </div>
 
@@ -99,7 +100,9 @@ export default function HeroSection() {
           <a href="#" className="flex items-center gap-1">
             Destination <IoIosArrowDown className="text-xs" />
           </a>
-          <Link href="/gallary">Gallary</Link>
+          <Link href="/gallary" onClick={() => setMenuOpen(false)}>
+            Gallary
+          </Link>
           <Link href="/contact" onClick={() => setMenuOpen(false)}>
             Contact
           </Link>
@@ -107,28 +110,95 @@ export default function HeroSection() {
           <div className="flex items-center gap-3 mt-4">
             <FaUserCircle className="text-xl" />
             <FaWhatsapp className="text-green-600 text-xl" />
-            <div className="text-xs leading-4">
-              <p className="text-gray-500">Whatsapp</p>
-              <p className="text-green-400 font-semibold">
-                +990-737 621 432
-              </p>
-            </div>
+            <a
+              href="https://wa.me/919907376214"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs leading-4 cursor-pointer text-right"
+            >
+              <p className="text-gray-500">WhatsApp</p>
+              <p className="text-green-500 font-semibold">+91 99073 76214</p>
+            </a>
           </div>
 
-          <button className="bg-green-400 text-white py-2 px-5 rounded-full font-semibold mt-2">
+          <button
+            onClick={() => {
+              setMenuOpen(false);
+              setShowForm(true);
+            }}
+            className={bookButtonClass}
+          >
             Book A Trip
           </button>
         </div>
       </div>
 
-      {/* Background overlay (optional smud effect) */}
+      {/* Overlay behind mobile menu */}
       {menuOpen && (
         <div
           onClick={() => setMenuOpen(false)}
           className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 lg:hidden"
         />
       )}
- 
+
+      {/* Book a Trip Modal */}
+      {showForm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center   bg-opacity-40 backdrop-blur-sm">
+          <div className="bg-white rounded-lg shadow-lg w-[90%] max-w-md p-6 relative">
+            <button
+              onClick={() => setShowForm(false)}
+              className="absolute top-3 right-4 text-2xl text-gray-500 hover:text-black"
+            >
+              &times;
+            </button>
+            <h2 className="text-xl font-semibold mb-4 text-center">
+              Book Your Trip
+            </h2>
+            <form className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium">Full Name</label>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Email</label>
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Travel Date</label>
+                <input
+                  type="date"
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">
+                  Number of People
+                </label>
+                <input
+                  type="number"
+                  min="1"
+                  placeholder="e.g. 2"
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition"
+              >
+                Confirm Booking
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }

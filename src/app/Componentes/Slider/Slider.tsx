@@ -102,7 +102,7 @@ export default function TopTrending() {
   {/* Your content here */}
    
     <div className="bg-[#f5f5f5] p-4 md:p-8 overflow-hidden relative" data-aos="fade-up">
-      <div className="mx-4 md:mx-10">
+      <div className="md:mx-10">
         <div className="flex flex-row justify-between items-center mb-4">
           <h2 className="text-xl md:text-2xl font-bold text-[#131313]">
             Top Trending

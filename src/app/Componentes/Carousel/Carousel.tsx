@@ -87,10 +87,10 @@ export default function TrendingDestinations() {
       <div data-aos="fade-up">
         {/* Your content here */}
 
-        <section className="px-5 py-16">
+        <section className="px- py-16">
           {/* Heading */}
-          <div className="flex justify-between items-center max-w-7xl mx-auto mb-10">
-            <h2 className="text-xl ml-12 md:text-2xl font-bold text-[#131313]">
+          <div className="flex justify-between  items-center max-w-7xl mx-auto mb-10">
+            <h2 className="text-xl mr-12 ml-4  md:text-2xl font-bold text-[#131313]">
               Trending destinations
             </h2>
 
