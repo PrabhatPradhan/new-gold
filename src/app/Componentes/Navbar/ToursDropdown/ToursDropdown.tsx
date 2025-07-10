@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -29,9 +30,12 @@ export default function ToursDropdown() {
       {/* Dropdown Menu */}
       {isOpen && (
         <div className="absolute top-full left-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-md z-50">
-          <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">Adventure</a>
-          <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">Cultural</a>
-          <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">Luxury</a>
+          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">Africa</Link>
+<Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">Europe</Link>
+<Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">Middle East</Link>
+<Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">Asia</Link>
+<Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">Oceania</Link>
+
         </div>
       )}
     </div>
