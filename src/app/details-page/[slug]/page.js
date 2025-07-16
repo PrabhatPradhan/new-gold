@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import InclusionExclusion from "../Componentes/InclusionExclusion/InclusionExclusion";
-import PackageHeaderdetail from "../Componentes/PackageHeaderdetail/PackageHeaderdetail";
+import InclusionExclusion from "../../Componentes/InclusionExclusion/InclusionExclusion";
+import PackageHeaderdetail from "../../Componentes/PackageHeaderdetail/PackageHeaderdetail";
 import {
   FaMapMarkedAlt,
   FaListUl,
@@ -12,8 +12,8 @@ import {
 } from "react-icons/fa";
 
 import Image from "next/image";
-import Navbar from "../Componentes/Navbar/Navbar";
-import Footer from "../Componentes/Footer/Footer";
+import Navbar from "../../Componentes/Navbar/Navbar";
+import Footer from "../../Componentes/Footer/Footer";
 const galleryImages = [
   "/Images/ditls-1.jpeg",
   "/Images/ditls-2.jpeg",
