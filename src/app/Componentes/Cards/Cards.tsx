@@ -56,7 +56,7 @@ export default function TrendingDestinations() {
         </h2>
         <a
           href="#"
-          className="text-xs md:text-sm text-[#131313] font-medium flex items-center gap-2 mr-2  "
+          className="text-xs md:text-sm text-[#131313]   flex items-center gap-2 mr-2  "
         >
           See all <GoArrowUpRight className="text-[10px] mt-[2px] " />
         </a>

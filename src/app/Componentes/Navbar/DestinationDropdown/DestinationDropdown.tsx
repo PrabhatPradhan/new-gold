@@ -3,11 +3,24 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
+const destinations = [
+  { name: "Leh Ladakh", slug: "leh-ladakh" },
+  { name: "Kashmir", slug: "kashmir" },
+  { name: "Himachal", slug: "himachal" },
+  { name: "Kathmandu", slug: "kathmandu" },
+  { name: "Amarnath", slug: "amarnath" },
+  { name: "Char Dham", slug: "char-dham" },
+  { name: "North East", slug: "north-east" },
+  { name: "Kerala", slug: "kerala" },
+  { name: "Rajasthan", slug: "rajasthan" },
+  { name: "Bhutan", slug: "bhutan" },
+  { name: "Andman Nikobar", slug: "andman-nikobar" },
+];
+
 export default function DestinationDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -41,39 +54,15 @@ export default function DestinationDropdown() {
 
       {isOpen && (
         <div className="absolute top-full left-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-md z-50">
-          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
-            Leh Ladakh
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
-            Kashmir
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
-            Himachal
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
-            Kathmandu
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
-            Amarnath
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
-            Char Dham
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
-            North East
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
-            Kerala
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
-            Rajasthan
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
-            Bhutan
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm hover:bg-gray-100">
-            Andman Nikobar
-          </Link>
+          {destinations.map((destination) => (
+            <Link
+              key={destination.slug}
+              href={`/listing/${destination.slug}`}
+              className="block px-4 py-2 text-sm hover:bg-gray-100"
+            >
+              {destination.name}
+            </Link>
+          ))}
         </div>
       )}
     </div>

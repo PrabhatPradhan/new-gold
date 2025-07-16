@@ -181,3 +181,127 @@ export default function TopTrending() {
     </>
   );
 }
+
+
+
+
+
+// "use client";
+// import Image from "next/image";
+// import { useEffect, useRef, useState } from "react";
+// import { FaArrowLeft, FaArrowRight, FaHeart } from "react-icons/fa";
+// import { MdLocationOn } from "react-icons/md";
+// import { PiClockLight } from "react-icons/pi";
+// import { GoArrowUpRight } from "react-icons/go";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
+// import axios from "axios";
+
+// export default function TopTrending() {
+//   const scrollRef = useRef<HTMLDivElement>(null);
+//   const [data, setData] = useState([]);
+
+//   const scroll = (direction: "left" | "right") => {
+//     const container = scrollRef.current;
+//     if (container) {
+//       const cardWidth = 260 + 24;
+//       const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
+//       container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+//     }
+//   };
+
+//   useEffect(() => {
+//     AOS.init({ duration: 1000, once: true, offset: 120 });
+//   }, []);
+
+//   useEffect(() => {
+//     axios
+//       .get("http://localhost:7000/api/trending")
+//       .then((res) => {
+//         setData(res.data); // Ensure your API returns an array of trending items
+//       })
+//       .catch((err) => {
+//         console.error("Error fetching trending data:", err);
+//       });
+//   }, []);
+
+//   return (
+//     <div
+//       className="bg-[#f5f5f5] p-4 md:p-8 overflow-hidden relative"
+//       data-aos="fade-up"
+//     >
+//       <div className="md:mx-10">
+//         <div className="flex flex-row justify-between items-center mb-4">
+//           <h2 className="text-xl md:text-2xl font-bold text-[#131313]">
+//             Top Trending
+//           </h2>
+//           <a
+//             href="#"
+//             className="text-slate-700 flex items-center gap-1 font-medium hover:underline text-sm"
+//           >
+//             See all
+//             <GoArrowUpRight />
+//           </a>
+//         </div>
+
+//         <div className="relative">
+//           <div
+//             ref={scrollRef}
+//             className="flex gap-6 overflow-x-auto scroll-smooth pb-2 no-scrollbar"
+//           >
+//             {data.map((item: any) => (
+//               <div
+//                 key={item.id}
+//                 className="bg-white rounded-lg shadow-md p-2 min-w-[260px] max-w-[260px] flex-shrink-0"
+//               >
+//                 <div className="relative w-full h-[180px] rounded-md overflow-hidden group">
+//                   <Image
+//                     src={item.image}
+//                     alt={item.title}
+//                     fill
+//                     className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]"
+//                   />
+//                   <button className="absolute bottom-2 right-2 bg-white p-1 rounded-full shadow">
+//                     <FaHeart className="text-gray-500 text-sm" />
+//                   </button>
+//                 </div>
+
+//                 <div className="mt-3 text-sm text-gray-600 flex items-center gap-1">
+//                   <MdLocationOn className="text-sm" /> {item.location}
+//                 </div>
+//                 <h3 className="mt-2 font-medium text-[14px] leading-snug">
+//                   {item.title}
+//                 </h3>
+//                 <div className="mt-1 text-yellow-500 text-sm">
+//                   ★★★★★{" "}
+//                   <span className="text-gray-600">{item.rating}</span>
+//                 </div>
+//                 <div className="flex justify-between items-center mt-2 text-sm">
+//                   <div className="flex items-center gap-1">
+//                     <PiClockLight className="text-sm" /> {item.duration || "4 days"}
+//                   </div>
+//                   <div>
+//                     From <span className="font-semibold">{item.price}</span>
+//                   </div>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+
+//           <button
+//             onClick={() => scroll("left")}
+//             className="hidden md:flex absolute left-[-50px] top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow z-10"
+//           >
+//             <FaArrowLeft />
+//           </button>
+//           <button
+//             onClick={() => scroll("right")}
+//             className="hidden md:flex absolute right-[-50px] top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow z-10"
+//           >
+//             <FaArrowRight />
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }

@@ -155,3 +155,94 @@ export default function VisaFreeDestinations() {
     </div>
   );
 }
+
+
+
+
+// 'use client';
+
+// import Image from 'next/image';
+// import { useEffect, useRef, useState } from 'react';
+// import { ChevronLeft, ChevronRight } from 'lucide-react';
+// import axios from 'axios';
+// import 'aos/dist/aos.css';
+
+// interface Destination {
+//   name: string;
+//   price: string;
+//   image: string;
+// }
+
+// export default function VisaFreeDestinations() {
+//   const scrollRef = useRef<HTMLDivElement>(null);
+//   const [destinations, setDestinations] = useState<Destination[]>([]);
+
+//   const scroll = (direction: 'left' | 'right') => {
+//     if (scrollRef.current) {
+//       const cardWidth = 140 + 8;
+//       const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
+//       scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+//     }
+//   };
+
+//   useEffect(() => {
+//     import('aos').then((AOS) => {
+//       AOS.default.init({ duration: 1000, once: true, offset: 120 });
+//     });
+
+//     // Fetch destination data from API
+//     axios
+//       .get('http://localhost:7000/api/trending') // replace with live URL if needed
+//       .then((res) => {
+//         setDestinations(res.data);
+//       })
+//       .catch((err) => {
+//         console.error('Error fetching destinations:', err);
+//       });
+//   }, []);
+
+//   return (
+//     <div className="px-4 md:px-6 py-8 md:py-10 bg-white ml-12 mr-4" data-aos="fade-up">
+//       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-2">
+//         <div>
+//           <h2 className="text-xl md:text-2xl font-bold text-[#131313]">
+//             Visa Free Destinations
+//           </h2>
+//           <p className="text-sm md:text-base text-gray-400">Up to 30% off! Limited time offer</p>
+//         </div>
+//         <div className="flex gap-2 self-end">
+//           <button onClick={() => scroll('left')} className="p-2 bg-gray-100 rounded-full">
+//             <ChevronLeft />
+//           </button>
+//           <button onClick={() => scroll('right')} className="p-2 bg-gray-100 rounded-full">
+//             <ChevronRight />
+//           </button>
+//         </div>
+//       </div>
+
+//       <div
+//         ref={scrollRef}
+//         className="flex gap-2 overflow-x-auto no-scrollbar mt-8 pb-1"
+//         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+//       >
+//         {destinations.map((dest, idx) => (
+//           <div
+//             key={idx}
+//             className="min-w-[140px] max-w-[140px] h-[170px] sm:h-[210px] relative rounded-xl overflow-hidden shadow-md hover:scale-105 transition-transform"
+//           >
+//             <Image src={dest.image} alt={dest.name} fill className="object-cover" />
+//             <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent text-white p-2 text-xs">
+//               <h3 className="font-semibold">{dest.name}</h3>
+//               {dest.price && (
+//                 <p>
+//                   Starting at <span className="font-bold">{dest.price}</span>
+//                   <br />Per person
+//                 </p>
+//               )}
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }

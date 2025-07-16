@@ -48,8 +48,9 @@ export default function HeroSection() {
           <div className="flex items-center gap-2">
             <FaWhatsapp className="text-green-800 text-xl" />
             <div className="text-xs leading-4">
-              <p className="text-gray-500">Whatsapp</p>
-              <p className="text-green-600 font-semibold">+990-737 621 432</p>
+            <a
+                      href="tel:9990447799"> <p className="text-gray-500">Whatsapp</p>
+              <p className="text-green-600 font-semibold">+9990447799</p></a>
             </div>
           </div>
           <button
