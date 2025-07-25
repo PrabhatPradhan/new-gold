@@ -100,9 +100,9 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-3">📍 Address</h3>
             <p className="text-gray-300 mb-2">608-609, Aggarwal Millenium Tower,</p>
             <p className="text-gray-300 mb-4">  Netaji Subhash Place, Pitampura, Delhi-110034</p>
-            <p> +91 9990447799</p>
+            <p>📞 +91 9990447799</p>
             <p>
-            Enquiry@goldtravels.net
+            📧 Enquiry@goldtravels.net
             </p>
             
             <h4 className="text-white font-semibold mb-2 mt-2">Payment Partner</h4>
