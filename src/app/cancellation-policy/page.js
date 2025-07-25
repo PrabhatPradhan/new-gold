@@ -9,7 +9,7 @@ export default function CancellationPolicy() {
       {/* Hero Section */}
       <section
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1170&q=80')`,
+          backgroundImage: `url('https://ditacademy.in/wp-content/uploads/2025/06/Refund-Policy.webp')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

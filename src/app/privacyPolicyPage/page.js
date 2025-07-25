@@ -10,7 +10,7 @@ export default function  Page() {
       {/* Hero Section */}
       <section
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1582719478148-3fdfecb5f1d3?q=80&w=1170&auto=format&fit=crop')`,
+          backgroundImage: `url('https://www.aarti-industries.com/Upload/Images/masthead/privacy-policy-lead.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

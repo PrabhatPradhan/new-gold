@@ -10,14 +10,14 @@ export default function Page() {
       {/* Hero Section */}
       <section
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1170&auto=format&fit=crop')`,
+          backgroundImage: `url('https://nationalplastic.com/_next/image?url=https%3A%2F%2Fnationalplastic.com%2Fuploads%2Fuploads%2Fbanner%2FRefund%20policy%20banner.jpg&w=3840&q=75')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
         className="py-16 px-[5%] mt-12 flex flex-col md:flex-row items-center justify-between"
       >
         <div>
-          <h1 className="text-4xl md:text-5xl mt-10 font-bold text-white mb-2">
+          <h1 className="text-4xl md:text-5xl mt-10 font-bold text-black mb-2">
             Refund Policy
           </h1>
           <p className="text-[#666] text-base">

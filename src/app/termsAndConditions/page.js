@@ -10,7 +10,7 @@ export default function Page() {
       <Navbar />
       <section
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1170&auto=format&fit=crop')`,
+          backgroundImage: `url('https://www.icertis.com/contentassets/a813f9ea8be04005b7ea2c3678c08e2f/terms-and-conditions-blog-graphics-header-inset.png?width=660')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
