@@ -101,7 +101,7 @@ export default function PromoBanner() {
               </div>
               <button
                 type="submit"
-                className="bg-orange-500 text-white w-full py-2 rounded hover:bg-orange-600 transition"
+                className="bg-green-500 text-white w-full py-2 rounded hover:bg-green-600 transition"
               >
                 Confirm Booking
               </button>

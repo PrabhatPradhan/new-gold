@@ -52,12 +52,12 @@ const tourPackages = [
     id: 3,
     title: "Royal Rajasthan Tour Package",
     duration: "04 Nights - 05 Days",
-    rating: 5,
+    rating: 2,
     locations: "1N Manali - 2N Shimla - 1N Dharamshala - 1N Dalhousie",
     price: 5999,
     image: "https://images.unsplash.com/photo-1751013781844-fa6a78089e49?w=600",
     icons: ["city", "meals", "sightseeing", "transfer"],
-    stars: 5,
+    stars: 2,
     city: "Manali",
     theme: "Adventure",
     type: "Group Package",
@@ -67,12 +67,12 @@ const tourPackages = [
     id: 4,
     title: "Desert Delight Tour Package",
     duration: "03 Nights - 04 Days",
-    rating: 4,
+    rating: 3,
     locations: "1N Jaisalmer - 2N Jodhpur",
     price: 4999,
     image: "https://images.unsplash.com/photo-1751670346016-bda0dc756da9?q=80",
     icons: ["city", "meals", "sightseeing", "transfer"],
-    stars: 4,
+    stars: 3,
     city: "Jaisalmer",
     theme: "Relaxation",
     type: "Customizable",
@@ -142,7 +142,7 @@ export default function PackagesPage() {
 
       <div className="md:flex   px-4 md:px-12 border   ">
         {/* Sidebar */}
-        <div className="w-full md:w-1/4 md:sticky top-24 border-r bg-white h-fit md:max-h-screen overflow-y-auto">
+        <div className="w-full md:w-1/4 md:sticky top-24 border-r bg-white  md:max-h-screen overflow-y-auto">
           <div className="md:hidden flex items-center justify-between p-4 border-b">
             <h2 className="text-lg font-semibold">Filters</h2>
             <button onClick={() => setMobileFilterOpen(!mobileFilterOpen)}>
@@ -182,7 +182,7 @@ export default function PackagesPage() {
             {/* Stars */}
             <div>
               <h2 className="font-semibold mb-2">Hotel Category</h2>
-              {[4, 5].map((star) => (
+              {[2,3,4, 5].map((star) => (
                 <div key={star} className="flex items-center space-x-2">
                   <input
                     type="checkbox"
@@ -227,22 +227,7 @@ export default function PackagesPage() {
             </div>
 
             {/* Type */}
-            <div>
-              <h2 className="font-semibold mb-2">Package Type</h2>
-              {["Customizable", "Group Package"].map((type) => (
-                <button
-                  key={type}
-                  className={`px-2 py-1 border rounded-lg mr-2 mt-1 ${
-                    typeFilter === type
-                      ? "bg-blue-500 text-white"
-                      : "bg-white text-black"
-                  }`}
-                  onClick={() => setTypeFilter(typeFilter === type ? "" : type)}
-                >
-                  {type}
-                </button>
-              ))}
-            </div>
+             
 
             {/* Premium */}
             <div>
@@ -314,14 +299,18 @@ export default function PackagesPage() {
 
                   <div className="flex flex-wrap gap-2 mt-2">
                     <a
-                      href="https://wa.me/"
+                       
+                      href="https://wa.me/+919990447799"
                       className="flex items-center gap-1 bg-green-500 text-white text-xs px-3 py-1 rounded-full"
                     >
                       <BsWhatsapp />
                     </a>
+                    <a
+                      href="tel:+919990447799">
                     <button className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-full text-xs">
                       <MdCall />
                     </button>
+                    </a>
                   <Link href="/details-page/slug">
 
                   <button className="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded-full text-xs ml-6">

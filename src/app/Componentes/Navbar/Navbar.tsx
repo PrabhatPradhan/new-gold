@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { FaWhatsapp, FaUserCircle } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import Image from "next/image";
@@ -20,18 +19,19 @@ export default function HeroSection() {
     <>
       {/* Navbar */}
       <div className="fixed top-0 left-0 w-full px-4 md:px-10 py-4 flex justify-between items-center bg-white z-50 shadow">
-        {/* Left logo + nav */}
         <div className="flex items-center gap-[7rem]">
-          <Image
-            src="/Images/nav-logo.png"
-            alt="Gold Travels Logo"
-            width={112}
-            height={40}
-            className="w-[9rem]"
-            priority
-          />
+          <Link href="/">
+            <Image
+              src="/Images/nav-logo.png"
+              alt="Gold Travels Logo"
+              width={112}
+              height={40}
+              className="w-[9rem]"
+              priority
+            />
+          </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop Nav */}
           <nav className="hidden lg:flex gap-8 text-[1rem] font-medium">
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>
@@ -42,27 +42,24 @@ export default function HeroSection() {
           </nav>
         </div>
 
-        {/* Right buttons - DESKTOP */}
+        {/* Right desktop */}
         <div className="hidden lg:flex items-center gap-5">
           <FaUserCircle className="text-xl" />
           <div className="flex items-center gap-2">
             <FaWhatsapp className="text-green-800 text-xl" />
             <div className="text-xs leading-4">
-            <a
-                      href="tel:9990447799"> <p className="text-gray-500">Whatsapp</p>
-              <p className="text-green-600 font-semibold">+9990447799</p></a>
+              <a href="tel:9990447799">
+                <p className="text-gray-500">Whatsapp</p>
+                <p className="text-green-600 font-semibold">+9990447799</p>
+              </a>
             </div>
           </div>
-          <button
-            suppressHydrationWarning
-            onClick={() => setShowForm(true)}
-            className={bookButtonClass}
-          >
+          <button onClick={() => setShowForm(true)} className={bookButtonClass}>
             Book A Trip
           </button>
         </div>
 
-        {/* Hamburger Menu - MOBILE */}
+        {/* Hamburger Mobile */}
         <div className="lg:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <RxCross2 size={24} /> : <GiHamburgerMenu size={24} />}
@@ -77,7 +74,6 @@ export default function HeroSection() {
         }`}
       >
         <div className="p-6 pt-6 flex flex-col gap-4 text-sm font-medium">
-          {/* Logo */}
           <div className="mb-6">
             <Image
               src="/Images/nav-logo.png"
@@ -89,24 +85,12 @@ export default function HeroSection() {
             />
           </div>
 
-          <Link href="/" onClick={() => setMenuOpen(false)}>
-            Home
-          </Link>
-          <Link href="/about" onClick={() => setMenuOpen(false)}>
-            About
-          </Link>
-          <a href="#" className="flex items-center gap-1">
-            Tours <IoIosArrowDown className="text-xs" />
-          </a>
-          <a href="#" className="flex items-center gap-1">
-            Destination <IoIosArrowDown className="text-xs" />
-          </a>
-          <Link href="/gallary" onClick={() => setMenuOpen(false)}>
-            Gallary
-          </Link>
-          <Link href="/contact" onClick={() => setMenuOpen(false)}>
-            Contact
-          </Link>
+          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
+          <ToursDropdown isMobile />
+          <DestinationDropdown isMobile />
+          <Link href="/gallary" onClick={() => setMenuOpen(false)}>Gallary</Link>
+          <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
 
           <div className="flex items-center gap-3 mt-4">
             <FaUserCircle className="text-xl" />
@@ -134,7 +118,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Overlay behind mobile menu */}
+      {/* Mobile overlay */}
       {menuOpen && (
         <div
           onClick={() => setMenuOpen(false)}
@@ -142,9 +126,9 @@ export default function HeroSection() {
         />
       )}
 
-      {/* Book a Trip Modal */}
+      {/* Booking Modal */}
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center   bg-opacity-40 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-40 backdrop-blur-sm">
           <div className="bg-white rounded-lg shadow-lg w-[90%] max-w-md p-6 relative">
             <button
               onClick={() => setShowForm(false)}
@@ -152,48 +136,25 @@ export default function HeroSection() {
             >
               &times;
             </button>
-            <h2 className="text-xl font-semibold mb-4 text-center">
-              Book Your Trip
-            </h2>
+            <h2 className="text-xl font-semibold mb-4 text-center">Book Your Trip</h2>
             <form className="space-y-4">
               <div>
                 <label className="block text-sm font-medium">Full Name</label>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full border border-gray-300 rounded px-3 py-2"
-                />
+                <input type="text" placeholder="Your Name" className="w-full border border-gray-300 rounded px-3 py-2" />
               </div>
               <div>
                 <label className="block text-sm font-medium">Email</label>
-                <input
-                  type="email"
-                  placeholder="you@example.com"
-                  className="w-full border border-gray-300 rounded px-3 py-2"
-                />
+                <input type="email" placeholder="you@example.com" className="w-full border border-gray-300 rounded px-3 py-2" />
               </div>
               <div>
                 <label className="block text-sm font-medium">Travel Date</label>
-                <input
-                  type="date"
-                  className="w-full border border-gray-300 rounded px-3 py-2"
-                />
+                <input type="date" className="w-full border border-gray-300 rounded px-3 py-2" />
               </div>
               <div>
-                <label className="block text-sm font-medium">
-                  Number of People
-                </label>
-                <input
-                  type="number"
-                  min="1"
-                  placeholder="e.g. 2"
-                  className="w-full border border-gray-300 rounded px-3 py-2"
-                />
+                <label className="block text-sm font-medium">Number of People</label>
+                <input type="number" min="1" placeholder="e.g. 2" className="w-full border border-gray-300 rounded px-3 py-2" />
               </div>
-              <button
-                type="submit"
-                className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition"
-              >
+              <button type="submit" className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition">
                 Confirm Booking
               </button>
             </form>

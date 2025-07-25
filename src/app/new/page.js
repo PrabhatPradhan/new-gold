@@ -1,80 +1,65 @@
-'use client';
+"use client";
+import React, { useState } from "react";
 
-import Image from 'next/image';
-import { FaHotel, FaUtensils, FaBinoculars, FaCar } from 'react-icons/fa';
-import { MdStar } from 'react-icons/md';
-import { BsWhatsapp } from 'react-icons/bs';
+export default function BudgetSlider() {
+  const [minVal, setMinVal] = useState(2500);
+  const [maxVal, setMaxVal] = useState(100000);
 
-export default function page() {
+  const min = 2500;
+  const max = 150000;
+
+  const formatPrice = (value) => `₹${value.toLocaleString("en-IN")}`;
+  const getPercent = (value) => ((value - min) / (max - min)) * 100;
+
   return (
-    <div className="flex flex-wrap justify-center gap-6 p-6">
-      {[1, 2].map((_, i) => (
+    <div className="w-full max-w-lg mx-auto">
+      <div className="flex justify-between items-center mb-2">
+        <h2 className="font-semibold">Budget (per person)</h2>
+        <span className="text-xl">⌃</span>
+      </div>
+
+      <div className="relative h-10">
+        {/* Track */}
+        <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-300 rounded transform -translate-y-1/2" />
+
+        {/* Active range */}
         <div
-          key={i}
-          className="flex max-w-xl rounded-2xl shadow-lg border overflow-hidden"
-        >
-          {/* Image */}
-          <div className="w-1/2 relative">
-            <Image
-              src="/rajasthan.jpg" // <-- Replace with your actual image path
-              alt="Rajasthan Desert"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-l-2xl"
-            />
-          </div>
+          className="absolute h-1 bg-blue-500 rounded top-1/2 transform -translate-y-1/2"
+          style={{
+            left: `${getPercent(minVal)}%`,
+            width: `${getPercent(maxVal) - getPercent(minVal)}%`,
+          }}
+        />
 
-          {/* Content */}
-          <div className="w-1/2 p-4 flex flex-col justify-between">
-            {/* Duration and Rating */}
-            <div className="flex justify-between items-center text-sm text-gray-600">
-              <span className="bg-pink-200 px-3 py-1 rounded-full text-xs font-semibold">
-                04 Nights - 05 Days
-              </span>
-              <span className="flex items-center gap-1 text-yellow-500">
-                5 <MdStar />
-              </span>
-            </div>
+        {/* Range Inputs */}
+        <input
+          type="range"
+          min={min}
+          max={max}
+          value={minVal}
+          onChange={(e) => {
+            const value = Math.min(Number(e.target.value), maxVal - 1000);
+            setMinVal(value);
+          }}
+          className="range-thumb"
+        />
+        <input
+          type="range"
+          min={min}
+          max={max}
+          value={maxVal}
+          onChange={(e) => {
+            const value = Math.max(Number(e.target.value), minVal + 1000);
+            setMaxVal(value);
+          }}
+          className="range-thumb"
+        />
+      </div>
 
-            {/* Title */}
-            <h2 className="text-lg font-bold text-gray-800 mt-2">
-              Royal Rajasthan Tour Package
-            </h2>
-
-            {/* Itinerary */}
-            <p className="text-xs text-gray-600 mt-1 mb-2 bg-gray-100 px-2 py-1 rounded-lg w-fit">
-              1N Manali - 2N Shimla - 1N Dharamshala - 1N Dalhousie
-            </p>
-
-            {/* Icons */}
-            <div className="flex items-center gap-3 text-gray-600 text-lg mb-3">
-              <FaHotel />
-              <FaUtensils />
-              <FaBinoculars />
-              <FaCar />
-            </div>
-
-            {/* Price */}
-            <div className="text-sm text-gray-700 font-semibold">
-              Starting From:
-              <span className="text-pink-600 text-xl ml-2 font-bold">
-                ₹5,999/-
-              </span>
-              <span className="text-xs text-gray-500"> Per Person</span>
-            </div>
-
-            {/* Buttons */}
-            <div className="flex items-center gap-2 mt-3">
-              <button className="flex items-center gap-2 text-white bg-green-500 hover:bg-green-600 px-3 py-1 rounded-full text-sm">
-                <BsWhatsapp /> Call To Action
-              </button>
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded-full text-sm">
-                More Details →
-              </button>
-            </div>
-          </div>
-        </div>
-      ))}
+      <div className="flex justify-between text-sm text-gray-700 mt-2">
+        <span>{formatPrice(minVal)}</span>
+        <span>{formatPrice(maxVal)}</span>
+      </div>
     </div>
   );
 }

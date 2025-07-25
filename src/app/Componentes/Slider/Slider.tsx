@@ -9,6 +9,7 @@ import { GoArrowUpRight } from "react-icons/go";
  
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
  
 const data = [
@@ -19,6 +20,7 @@ const data = [
     title: "Centipede Tour – Guided Arizona Desert Tour by ATV",
     rating: "4.8 (243)",
     price: "$189.25",
+    slug:"/Paris"
   },
   {
     id: 2,
@@ -27,6 +29,7 @@ const data = [
     title: "Molokini and Turtle Town Snorkeling Adventure Aboard",
     rating: "4.8 (243)",
     price: "$225",
+    slug:"New York"
   },
   {
     id: 3,
@@ -35,6 +38,7 @@ const data = [
     title: "Westminster Walking Tour & Westminster Abbey Entry",
     rating: "4.8 (243)",
     price: "$943",
+    slug:"London"
   },
   {
     id: 4,
@@ -43,6 +47,7 @@ const data = [
     title: "All Inclusive Ultimate Circle Island Day Tour with Lunch",
     rating: "4.8 (243)",
     price: "$771",
+    slug:"New york"
   },
   {
     id: 5,
@@ -51,6 +56,7 @@ const data = [
     title: "Centipede Tour – Guided Arizona Desert Tour by ATV",
     rating: "4.8 (243)",
     price: "$189.25",
+    slug:"Paris"
   },
   {
     id: 6,
@@ -59,6 +65,7 @@ const data = [
     title: "Molokini and Turtle Town Snorkeling Adventure Aboard",
     rating: "4.8 (243)",
     price: "$225",
+    slug:"New York"
   },
   {
     id: 7,
@@ -67,6 +74,7 @@ const data = [
     title: "Westminster Walking Tour & Westminster Abbey Entry",
     rating: "4.8 (243)",
     price: "$943",
+    slug:"London"
   },
   {
     id: 8,
@@ -75,6 +83,7 @@ const data = [
     title: "All Inclusive Ultimate Circle Island Day Tour with Lunch",
     rating: "4.8 (243)",
     price: "$771",
+    slug:"New York"
   },
 ];
 
@@ -127,6 +136,7 @@ export default function TopTrending() {
                 key={item.id}
                 className="bg-white rounded-lg shadow-md p-2 min-w-[260px] max-w-[260px] flex-shrink-0  "
               >
+                <Link   href={`/details-page/${item.slug}`}>
                 <div className="relative w-full h-[180px] rounded-md overflow-hidden group">
                   <Image
                     src={item.image}
@@ -156,6 +166,7 @@ export default function TopTrending() {
                     From <span className="font-semibold">{item.price}</span>
                   </div>
                 </div>
+                </Link>
               </div>
             ))}
           </div>

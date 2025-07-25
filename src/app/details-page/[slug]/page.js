@@ -4,6 +4,8 @@ import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import InclusionExclusion from "../../Componentes/InclusionExclusion/InclusionExclusion";
 import PackageHeaderdetail from "../../Componentes/PackageHeaderdetail/PackageHeaderdetail";
+import Navbar from "../../Componentes/Navbar/Navbar";
+import Footer from "../../Componentes/Footer/Footer";
 import {
   FaMapMarkedAlt,
   FaListUl,
@@ -12,8 +14,7 @@ import {
 } from "react-icons/fa";
 
 import Image from "next/image";
-import Navbar from "../../Componentes/Navbar/Navbar";
-import Footer from "../../Componentes/Footer/Footer";
+
 const galleryImages = [
   "/Images/ditls-1.jpeg",
   "/Images/ditls-2.jpeg",
@@ -31,13 +32,7 @@ const navTabs = [
 
 export default function TourUI() {
   const [currentImage, setCurrentImage] = useState(0);
-
-  const currentDate = new Date();
-  const options = { day: "2-digit", month: "short", year: "2-digit" };
-  const day = currentDate.toLocaleDateString("en-US", { weekday: "short" });
-  const formattedDate = currentDate
-    .toLocaleDateString("en-GB", options)
-    .replace(/\//g, " ");
+  const [showAll, setShowAll] = useState(false);
 
   const handlePrev = () => {
     setCurrentImage((prev) =>
@@ -50,9 +45,13 @@ export default function TourUI() {
       prev === galleryImages.length - 1 ? 0 : prev + 1
     );
   };
-  const [showAll, setShowAll] = useState(false);
 
-  const itinerary = [
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Inquiry form submitted!");
+  };
+
+  const fullItinerary = [
     {
       day: "Day 1",
       title: "Arrival - Johannesburg",
@@ -102,10 +101,6 @@ export default function TourUI() {
       description: `Ascend Table Mountain via cableway (weather permitting) and get a bird's eye view of the city. Later, proceed for a city tour including Company Gardens, Greenmarket Square, Signal Hill, and more.`,
       meals: "Breakfast, Lunch, Dinner",
     },
-  ];
-
-  const fullItinerary = [
-    ...itinerary,
     {
       day: "Day 9",
       title: "Game Drive",
@@ -119,7 +114,6 @@ export default function TourUI() {
       description: `Take a flight to George and explore the scenic Garden Route. Overnight at George.`,
       meals: "Breakfast, Lunch, Dinner",
     },
-    // Add remaining days...
   ];
 
   const visibleItinerary = showAll ? fullItinerary : fullItinerary.slice(0, 2);
@@ -128,11 +122,8 @@ export default function TourUI() {
     <>
       <Navbar />
       <div className="w-full min-h-screen relative mt-26">
-        {/* Main Content */}
         <div className="flex flex-col lg:flex-row w-full">
-          {/* Left Side: Gallery */}
-          <div className="flex-1 bg-white p-4  overflow-y-auto">
-            {/* <h2 className="text-2xl font-bold mb-4">Gallery</h2> */}
+          <div className="flex-1 bg-white p-4 overflow-y-auto">
             <div className="relative w-full h-96 rounded overflow-hidden">
               <Image
                 src={galleryImages[currentImage]}
@@ -157,9 +148,9 @@ export default function TourUI() {
                 </button>
               </div>
             </div>
+
             <PackageHeaderdetail />
 
-            {/* Navigation Tabs Below Gallery */}
             <div className="flex gap-3 p-4 flex-wrap mt-6">
               {navTabs.map((tab, idx) => (
                 <button
@@ -176,8 +167,8 @@ export default function TourUI() {
                 </button>
               ))}
             </div>
-            <hr />
 
+            <hr />
             <InclusionExclusion />
 
             <div className="border rounded-lg p-6 bg-white mt-12">
@@ -186,14 +177,12 @@ export default function TourUI() {
                 Day wise travel itinerary
               </h2>
               <hr />
-              <hr />
-
               <div className="space-y-6 text-sm leading-relaxed">
                 {visibleItinerary.map((item, index) => (
                   <div key={index}>
                     <hr />
                     <p className="text-red-500 mt-2 font-semibold">
-                      {item.day} :{" "}
+                      {item.day}:{" "}
                       <span className="text-black font-bold">{item.title}</span>
                     </p>
                     <p>{item.description}</p>
@@ -203,7 +192,7 @@ export default function TourUI() {
                       </p>
                     )}
                     <p className="font-semibold">
-                      Included Meals :{" "}
+                      Included Meals:{" "}
                       <span className="font-normal">{item.meals}</span>
                     </p>
                   </div>
@@ -223,23 +212,21 @@ export default function TourUI() {
             </div>
           </div>
 
-          {/* Right Side: Fare and Details */}
           <div className="w-full lg:w-1/3 bg-gray-100 p-6 flex flex-col gap-1 sticky top-20 self-start h-fit">
-          <div className="md:static md:mt-0 fixed bottom-0 left-0 w-full bg-white shadow-md p-4 z-50 md:w-auto md:bg-transparent md:shadow-none">
-  <h2 className="text-xl font-semibold">Starting Price</h2>
-  <div className="text-2xl font-bold">
-    ₹ 75,000--/
-    <span className="text-sm font-normal">per person</span>
-    <p className="text-xs text-yellow-600 ">* GST & TCS Extra</p>
-  </div>
-</div>
-
+            <div className="md:static md:mt-0 fixed bottom-0 left-0 w-full bg-white shadow-md p-4 z-50 md:w-auto md:bg-transparent md:shadow-none">
+              <h2 className="text-xl font-semibold">Starting Price</h2>
+              <div className="text-2xl font-bold">
+                ₹ 75,000-/{" "}
+                <span className="text-sm font-normal">per person</span>
+                <p className="text-xs text-yellow-600">* GST & TCS Extra</p>
+              </div>
+            </div>
 
             <div className="mt-2 bg-white p-4 rounded-2xl shadow-xl max-w-xl mx-auto">
               <h3 className="text-2xl font-bold mb-4 text-gray-800">
                 Inquiry Form
               </h3>
-              <form className="space-y-3">
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <input
                   type="text"
                   placeholder="Full Name"

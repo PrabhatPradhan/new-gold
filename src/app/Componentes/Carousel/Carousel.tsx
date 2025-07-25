@@ -6,6 +6,7 @@ import { GoArrowUpRight } from "react-icons/go";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 export default function TrendingDestinations() {
   const destinations = [
@@ -117,6 +118,7 @@ export default function TrendingDestinations() {
             >
               {destinations.map((d, i) => (
                 <div key={i} className="flex-shrink-0 text-center">
+                  <Link href={`/listing/${d.city}`}>
                   <div className="w-[100px] h-[100px] relative mb-3 rounded-full overflow-hidden mx-auto">
                     <Image
                       src={d.img}
@@ -130,6 +132,7 @@ export default function TrendingDestinations() {
                     {d.city}
                   </p>
                   <p className="text-sm text-slate-500">{d.tours}</p>
+                  </Link>
                 </div>
               ))}
             </div>

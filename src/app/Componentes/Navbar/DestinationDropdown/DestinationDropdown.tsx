@@ -17,16 +17,13 @@ const destinations = [
   { name: "Andman Nikobar", slug: "andman-nikobar" },
 ];
 
-export default function DestinationDropdown() {
+export default function DestinationDropdown({ isMobile = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
@@ -35,31 +32,31 @@ export default function DestinationDropdown() {
   }, []);
 
   return (
-    <div className="relative" ref={dropdownRef}>
-      <a
-        href="#"
-        onClick={(e) => {
-          e.preventDefault();
-          setIsOpen(!isOpen);
-        }}
-        className="flex items-center gap-1 text-gray-800 font-medium hover:text-black"
+    <div className={`relative ${isMobile ? "" : "hover:cursor-pointer"}`} ref={dropdownRef}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center justify-between w-full gap-1 text-gray-800 font-medium"
       >
         Destination{" "}
-        <IoIosArrowDown
-          className={`text-xs transition-transform ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        />
-      </a>
+        <IoIosArrowDown className={`text-xs transition-transform ${isOpen ? "rotate-180" : ""}`} />
+      </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-md z-50">
+        <div
+          className={`${
+            isMobile
+              ? "pl-4 mt-1"
+              : "absolute left-0 top-full mt-2 w-44 z-50"
+          } bg-white border border-gray-100 rounded-md  `}
+        >
           {destinations.map((destination) => (
             <Link
               key={destination.slug}
               href={`/listing/${destination.slug}`}
-              className="block px-4 py-2 text-sm hover:bg-gray-100"
+              className="block px-2 py-1 text-sm hover:bg-gray-100 text-gray-800"
+              onClick={() => setIsOpen(false)}
             >
+              <hr/>
               {destination.name}
             </Link>
           ))}

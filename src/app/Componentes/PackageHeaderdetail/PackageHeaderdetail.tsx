@@ -11,7 +11,7 @@ export default function PackageHeader() {
       {/* Package Title */}
       <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
         Exotic Manali Volvo Package{" "}
-        <span className="text-sm text-gray-500">(Himachal-101)</span>
+        <span className="text-sm text-gray-500">(Himachal-101) </span>
       </h2>
 
       {/* Duration and Reviews */}
@@ -61,17 +61,28 @@ export default function PackageHeader() {
 
       {/* Buttons */}
       <div className="flex flex-wrap gap-4 mt-6">
-        <button className="flex items-center gap-2 border border-green-600 text-green-600 font-medium px-4 py-2 rounded-md hover:bg-green-50 transition text-sm">
-          <FaPhoneAlt />
-          Call
-        </button>
-        <button className="flex items-center gap-2 border border-green-600 text-green-600 font-medium px-4 py-2 rounded-md hover:bg-green-50 transition text-sm">
-          <FaWhatsapp />
-          Whatsapp
-        </button>
-        <button className="flex items-center gap-2 border border-red-500 text-red-500 font-medium px-4 py-2 rounded-md hover:bg-red-50 transition text-sm">
-          Enquiry
-        </button>
+        {/* Call Button */}
+        <a href="tel:+9990447799" target="_blank" rel="noopener noreferrer">
+          <button className="flex items-center gap-2 border border-green-600 text-green-600 font-medium px-4 py-2 rounded-md hover:bg-green-50 transition text-sm">
+            <FaPhoneAlt />
+            Call
+          </button>
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href="https://wa.me/9990447799"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className="flex items-center gap-2 border border-green-600 text-green-600 font-medium px-4 py-2 rounded-md hover:bg-green-50 transition text-sm">
+            <FaWhatsapp />
+            WhatsApp
+          </button>
+        </a>
+
+        {/* Enquiry Button */}
+         
       </div>
     </div>
   );

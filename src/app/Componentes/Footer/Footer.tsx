@@ -63,13 +63,13 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="ml-42 mt-19">
             <h3 className="text-lg font-bold mb-3">Quick Link</h3>
-            <ul className="space-y-2 text-gray-300">
-              <li>About us</li>
-              <li>Destinations</li>
+            <ul className="space-y-2 text-gray-300">              
+              <li><Link href="/about">About us</Link></li>
+              <li><Link href="/gallary">Gallary </Link></li>
               <li>Tour Package</li>
-              <li>Tour Guide</li>
-              <li>Article</li>
-              <li><Link href="/listing">Listing</Link></li>
+             
+              <li><Link href="/contact">Contact</Link></li>
+              <li><Link href='/listing/slug'>Listing</Link></li>
             </ul>
           </div>
 
