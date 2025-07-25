@@ -70,6 +70,11 @@ export default function Footer() {
              
               <li><Link href="/contact">Contact</Link></li>
               <li><Link href='/listing/slug'>Listing</Link></li>
+              <li><Link href="/cancellation-policy">Cancellation Policy</Link></li>
+              <li><Link href='/refund-policy'>Refund Policy</Link></li>
+              <li><Link href="/termsAndConditions">Terms & Conditions</Link></li>
+              <li><Link href='/privacyPolicyPage'>Privacy Policy Page</Link></li>
+
             </ul>
           </div>
 
@@ -82,6 +87,10 @@ export default function Footer() {
               <li>Indonesia Tour</li>
               <li>Nepal Tour</li>
               <li>Saudi Arab Tour</li>
+              <li>Paris</li>
+              <li>London</li>
+              <li>Bali</li>
+              
             </ul>
           </div>
 
@@ -91,8 +100,12 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-3">📍 Address</h3>
             <p className="text-gray-300 mb-2">608-609, Aggarwal Millenium Tower,</p>
             <p className="text-gray-300 mb-4">  Netaji Subhash Place, Pitampura, Delhi-110034</p>
-
-            <h4 className="text-white font-semibold mb-2">Payment Partner</h4>
+            <p> +91 9990447799</p>
+            <p>
+            Enquiry@goldtravels.net
+            </p>
+            
+            <h4 className="text-white font-semibold mb-2 mt-2">Payment Partner</h4>
             <div className="flex flex-wrap gap-2">
               <Image
                 src="/Images/footer-ic-1.jpg"

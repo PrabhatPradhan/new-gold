@@ -26,7 +26,7 @@ export default function HeroSection() {
               alt="Gold Travels Logo"
               width={112}
               height={40}
-              className="w-[9rem]"
+              className="w-[8rem]"
               priority
             />
           </Link>
@@ -44,7 +44,7 @@ export default function HeroSection() {
 
         {/* Right desktop */}
         <div className="hidden lg:flex items-center gap-5">
-          <FaUserCircle className="text-xl" />
+           
           <div className="flex items-center gap-2">
             <FaWhatsapp className="text-green-800 text-xl" />
             <div className="text-xs leading-4">
